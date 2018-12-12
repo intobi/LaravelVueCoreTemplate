@@ -1,6 +1,6 @@
 import './bootstrap';
 import router from './router';
-
+import store from './store';
 
 import { abilitiesPlugin, Can  } from '@casl/vue';
 import { AbilityBuilder } from '@casl/ability'
@@ -30,4 +30,5 @@ router.beforeEach((to, from, next) => {
 const app = new Vue({
     el: '#app',
     router,
+    store
 });
