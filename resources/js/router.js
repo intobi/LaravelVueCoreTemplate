@@ -6,24 +6,39 @@ export default new VueRouter({
     routes: [
         {
             path: '/',
-            component: require('./views/index'),
-            name: 'index',
+            component: require('./views/layout'),
+
+            children: [
+                {
+                    path: '/',
+                    component: require('./views/index'),
+                    name: 'index',
+                },
+                {
+                    path: '/test',
+                    component: require('./views/test'),
+                    name: 'test',
+                    meta: {
+                        resource: 'test'
+                    },
+                },
+                {
+                    path: '/superadmin',
+                    component: require('./views/superadmin'),
+                    name: 'superadmin',
+                    meta: {
+                        resource: 'superadmin'
+                    }
+                },
+            ]
         },
         {
-            path: '/test',
+            path: '/test2',
             component: require('./views/test'),
-            name: 'test',
+            name: 'test2',
             meta: {
                 resource: 'test'
-            }
-        },
-        {
-            path: '/superadmin',
-            component: require('./views/superadmin'),
-            name: 'superadmin',
-            meta: {
-                resource: 'superadmin'
-            }
-        },
+            },
+        }
     ],
 });

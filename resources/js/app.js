@@ -2,7 +2,7 @@ import './bootstrap';
 import router from './router';
 
 
-import { abilitiesPlugin } from '@casl/vue';
+import { abilitiesPlugin, Can  } from '@casl/vue';
 import { AbilityBuilder } from '@casl/ability'
 let abilities = AbilityBuilder.define(can => {
     can('read', 'guest');
@@ -10,13 +10,14 @@ let abilities = AbilityBuilder.define(can => {
     can(['read', 'write'], 'superadmin');
 });
 Vue.use(abilitiesPlugin, abilities);
+Vue.component('Can', Can);
 
 router.beforeEach((to, from, next) => {
-    let canNavigate = true;
-    if (to.meta.resource != null)
-        canNavigate = to.matched.some(route => {
-            return abilities.can(route.meta.action || 'read', route.meta.resource)
-        });
+    let canNavigate  = to.matched.every(route => {
+        if (route.meta.resource != null)
+            return abilities.can(route.meta.action || 'read', route.meta.resource);
+        return true
+    });
 
     if (!canNavigate) {
         return next('/')
