@@ -1,6 +1,6 @@
 <template>
-    <div>
-        test
+    <div v-if="$can('write', 'superadmin')">
+       SuperAdmin
     </div>
 </template>
 
