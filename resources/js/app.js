@@ -1,6 +1,6 @@
 import './bootstrap';
 import router from './router';
-import store from './store';
+import store from './store/store';
 
 import { abilitiesPlugin, Can  } from '@casl/vue';
 import { AbilityBuilder } from '@casl/ability'

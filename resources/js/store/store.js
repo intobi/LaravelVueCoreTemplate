@@ -1,8 +1,16 @@
 import Vuex from 'vuex'
 
-export default  new Vuex.Store({
+import storagePlugin from './plugins/storage';
+import user from './modules/user';
 
-    plugins: [],
+
+
+export default  new Vuex.Store({
+    plugins: [
+        storagePlugin({
+            storedKeys: ['user']
+        })
+    ],
     state: {
         test: false,
     },
@@ -15,7 +23,9 @@ export default  new Vuex.Store({
     actions: {
         settest({ commit }, value) {
             commit('test', value);
-        },
+        }
     },
-    modules: {}
+    modules: {
+        user
+    }
 });

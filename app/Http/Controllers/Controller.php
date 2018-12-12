@@ -14,4 +14,8 @@ class Controller extends BaseController
     function index() {
         return view('index');
     }
+
+    function login() {
+        return response()->json(['token' => 'mytoken'],200);
+    }
 }
