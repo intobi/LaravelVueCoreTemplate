@@ -13,13 +13,16 @@ export default new VueRouter({
             path: '/test',
             component: require('./views/test'),
             name: 'test',
+            meta: {
+                resource: 'test'
+            }
         },
         {
             path: '/superadmin',
             component: require('./views/superadmin'),
             name: 'superadmin',
             meta: {
-                resource: 'Superadmin'
+                resource: 'superadmin'
             }
         },
     ],

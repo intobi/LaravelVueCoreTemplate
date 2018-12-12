@@ -2,12 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router';
 import axios from 'axios';
-import { abilitiesPlugin } from '@casl/vue';
-import { AbilityBuilder } from '@casl/ability'
-let ability = AbilityBuilder.define(can => {
-    can('read', 'all');
-    can('write', 'superadmin');
-});
+
 
 window.Vue = Vue;
 window._ = require('lodash');
@@ -32,4 +27,4 @@ if (token) {
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
-Vue.use(abilitiesPlugin, ability);
+
